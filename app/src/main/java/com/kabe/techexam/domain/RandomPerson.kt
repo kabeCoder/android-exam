@@ -8,6 +8,6 @@ import java.io.Serializable
 @Entity(tableName = "Random_Person")
 data class RandomPerson(
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
     @SerializedName("gender") var gender: String = "",
+
     ) : Serializable

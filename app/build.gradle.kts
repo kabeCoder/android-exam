@@ -80,21 +80,26 @@ dependencies {
     ksp(libs.compose.destinations.ksp)
 
     // Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.44.2")
-    kapt("com.google.dagger:hilt-android-compiler:2.44.2")
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.dagger.hilt.android.compiler)
+
+    //Hilt Navigation Compose
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
-    implementation ("com.google.code.gson:gson:2.8.8")
+    implementation (libs.squareup.retrofit2.retrofit)
+    implementation (libs.squareup.retrofit2.converter.gson)
+    implementation (libs.squareup.okhttp3)
+    implementation (libs.squareup.gson)
 
     // Room
-    // Room
-    implementation ("androidx.room:room-runtime:2.6.1")
-    implementation ("androidx.room:room-ktx:2.6.1")
-    kapt ("androidx.room:room-compiler:2.6.1")
-    annotationProcessor ("androidx.room:room-compiler:2.6.1")
+    implementation (libs.androidx.room)
+    implementation (libs.androidx.room.ktx)
+    ksp (libs.androidx.room.compiler)
+    annotationProcessor (libs.androidx.room.compiler)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines)
 
 }
 

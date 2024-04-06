@@ -1,4 +1,4 @@
-package com.kabe.techexam.detailscreen
+package com.kabe.techexam.features.details
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text

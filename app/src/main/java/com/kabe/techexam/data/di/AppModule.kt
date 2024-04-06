@@ -4,7 +4,7 @@ import android.content.Context
 import com.kabe.techexam.BuildConfig.DEBUG
 import com.kabe.techexam.constant.AppConstants
 import com.kabe.techexam.data.base.RetrofitBuilder
-import com.kabe.techexam.network.RandomUserService
+import com.kabe.techexam.network.RandomPersonService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,7 +51,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTriviaService(retrofit: Retrofit): RandomUserService {
-        return retrofit.create(RandomUserService::class.java)
+    fun provideTriviaService(retrofit: Retrofit): RandomPersonService {
+        return retrofit.create(RandomPersonService::class.java)
     }
 }
