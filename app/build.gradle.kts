@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.composeDestinations)
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -72,7 +75,16 @@ dependencies {
     implementation(libs.androidx.constraintlayout.compose)
 
     // Compose Destinations
-    implementation("io.github.raamcosta.compose-destinations:core:1.9.63")
-    ksp("io.github.raamcosta.compose-destinations:ksp:1.9.63")
+    implementation(libs.compose.destinations.core)
+    ksp(libs.compose.destinations.ksp)
 
+    // Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.44.2")
+    kapt("com.google.dagger:hilt-android-compiler:2.44.2")
+
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

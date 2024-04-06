@@ -28,7 +28,6 @@ fun HomeScreenView(
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
         val (btnDetails) = createRefs()
 
-
         Button(
             modifier = Modifier.constrainAs(btnDetails) {
                 centerVerticallyTo(parent)
