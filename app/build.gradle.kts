@@ -101,6 +101,9 @@ dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines)
 
+    // Coil
+    implementation(libs.coil.compose)
+
 }
 
 // Allow references to generated code

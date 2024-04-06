@@ -1,5 +1,6 @@
 [versions]
 agp = "8.3.1"
+coilCompose = "2.2.2"
 hiltNavigationCompose = "1.2.0"
 kotlin = "1.9.0"
 coreKtx = "1.12.0"
@@ -19,10 +20,12 @@ okhttp3 =  "4.9.0"
 gson = "2.8.8"
 room = "2.6.1"
 coroutines = "1.7.1"
+coil = "2.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-navigation-compose-v120 = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -50,6 +53,8 @@ androidx-room =  { group = "androidx.room", name = "room-runtime", version.ref =
 androidx-room-ktx =  { group = "androidx.room", name = "room-ktx", version.ref = "room"}
 androidx-room-compiler =  { group = "androidx.room", name = "room-compiler", version.ref = "room"}
 kotlinx-coroutines =  { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines"}
+coil =  { group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

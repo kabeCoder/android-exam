@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Tech Exam</string>
+
+    // Home Screen
+    <string name="label_name">Name</string>
+    <string name="label_gender">Gender</string>
+    <string name="label_nationality">Nationality</string>
 </resources>

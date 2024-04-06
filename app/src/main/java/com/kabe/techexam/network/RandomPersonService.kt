@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface RandomPersonService {
 
-    @GET("api/?results=5")
+    @GET("api/?results=10")
     suspend fun getRandomPerson() : RandomPersonResponse
 }

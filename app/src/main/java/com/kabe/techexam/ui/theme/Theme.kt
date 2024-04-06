@@ -64,7 +64,7 @@ fun TechExamTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = PoppinsTypography,
         content = content
     )
 }
