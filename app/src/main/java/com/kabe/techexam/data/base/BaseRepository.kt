@@ -3,6 +3,7 @@ package com.kabe.techexam.data.base
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
+import com.kabe.techexam.BuildConfig
 
 import java.net.UnknownHostException
 import retrofit2.HttpException
@@ -12,9 +13,9 @@ abstract class BaseRepository {
         Resource.success(callFunction())
     } catch (e: Exception) {
 
-//        if (BuildConfig.DEBUG) {
-//            e.printStackTrace()
-//        }
+        if (BuildConfig.DEBUG) {
+            e.printStackTrace()
+        }
 
         val exception = ServiceException(
             when (e) {
