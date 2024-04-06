@@ -5,4 +5,11 @@
     <string name="label_name">Name</string>
     <string name="label_gender">Gender</string>
     <string name="label_nationality">Nationality</string>
+    <string name="label_birthday">Birthday</string>
+    <string name="label_age">Age</string>
+    <string name="label_email_address">Email Address</string>
+    <string name="label_mobile_number">Mobile Number</string>
+    <string name="label_Address">Address</string>
+    <string name="label_contact_person">Contact Person</string>
+    <string name="label_contact_person_mobile_number">Contact Person Mobile Number</string>
 </resources>
