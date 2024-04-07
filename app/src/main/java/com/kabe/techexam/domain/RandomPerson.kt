@@ -7,7 +7,7 @@ import java.io.Serializable
 
 @Entity(tableName = "Random_Person")
 data class RandomPerson(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true) var iD: Int,
     @SerializedName("picture") var picture: Picture? = null,
     @SerializedName("name") var name: Name? = null,
     @SerializedName("dob") var dateOfBirth: DateOfBirth? = null,

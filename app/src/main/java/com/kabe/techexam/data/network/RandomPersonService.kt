@@ -1,6 +1,6 @@
-package com.kabe.techexam.network
+package com.kabe.techexam.data.network
 
-import com.kabe.techexam.model.response.RandomPersonResponse
+import com.kabe.techexam.data.model.response.RandomPersonResponse
 import retrofit2.http.GET
 
 interface RandomPersonService {

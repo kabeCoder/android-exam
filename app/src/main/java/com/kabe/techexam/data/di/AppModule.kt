@@ -1,10 +1,13 @@
 package com.kabe.techexam.data.di
 
 import android.content.Context
+import androidx.room.Room
 import com.kabe.techexam.BuildConfig.DEBUG
 import com.kabe.techexam.constant.AppConstants
 import com.kabe.techexam.data.base.RetrofitBuilder
-import com.kabe.techexam.network.RandomPersonService
+import com.kabe.techexam.data.database.AppDatabase
+import com.kabe.techexam.data.network.RandomPersonService
+import com.kabe.techexam.data.repository.RandomPersonRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,6 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object AppModule {
 
     private const val TIMEOUT = 20000 //20 seconds
+    private const val DATABASE_NAME = "random_person_database"
 
     // Retrofit Builder
     @Provides
@@ -51,7 +55,24 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTriviaService(retrofit: Retrofit): RandomPersonService {
+    fun provideRandomPersonService(retrofit: Retrofit): RandomPersonService {
         return retrofit.create(RandomPersonService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideRandomPersonRepository(
+        randomPersonService: RandomPersonService,
+        appDatabase: AppDatabase
+    ): RandomPersonRepository {
+        return RandomPersonRepository(randomPersonService, appDatabase)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRandomPersonDb(@ApplicationContext appContext: Context) = Room.databaseBuilder(
+        appContext,
+        AppDatabase::class.java,
+        DATABASE_NAME
+    ).fallbackToDestructiveMigration().build()
 }
