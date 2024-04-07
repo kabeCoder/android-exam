@@ -1,5 +1,6 @@
 package com.kabe.techexam.features.home
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -46,17 +48,21 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun HomeScreen(navigator: DestinationsNavigator?) {
     val viewModel: HomeScreenViewModel = hiltViewModel()
     val randomPersonList by viewModel.randomPerson.collectAsState(initial = emptyList())
-    val randomPersonLoadingState by viewModel.loadingStateRandomPerson.collectAsState(initial = "")
+    val randomPersonLoadingState by viewModel.loadingStateRandomPerson.collectAsState(initial = false)
 
-
-    LaunchedEffect(Unit) {
+    LaunchedEffect(randomPersonList.isEmpty()) {
         viewModel.getRandomPerson()
     }
 
-    HomeScreenView(
-        navigator = navigator,
-        randomPersonList = randomPersonList,
-    )
+
+    if (randomPersonLoadingState) {
+        CircularProgressIndicator(modifier = Modifier.fillMaxSize())
+    } else {
+        HomeScreenView(
+            navigator = navigator,
+            randomPersonList = randomPersonList,
+        )
+    }
 }
 
 @Composable
