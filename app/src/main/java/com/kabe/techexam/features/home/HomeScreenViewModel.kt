@@ -63,4 +63,32 @@ class HomeScreenViewModel @Inject constructor(
             _loadingStateRandomPerson.emit(false)
         }
     }
+
+    suspend fun refreshRandomPerson() {
+        viewModelScope.launch {
+            // Emit loading state
+            _loadingStateRandomPerson.emit(true)
+
+            // Fetch data from the API
+            fetchRandomPersonFromApi()
+
+            // Refresh is complete, emit loading state again to indicate completion
+            _loadingStateRandomPerson.emit(false)
+        }
+    }
+
+    private suspend fun fetchRandomPersonFromApi() {
+        val randomPersonResult = randomPersonRepository.getRandomPerson()
+        when(randomPersonResult.status) {
+            Status.SUCCESS -> {
+                val updatedCachedData = randomPersonRepository.getCachedRandomPerson()
+                _randomPerson.emit(updatedCachedData)
+            }
+            Status.ERROR -> {
+                randomPersonResult.message?.let { _errorMessage.emit(it) }
+            }
+        }
+    }
+
+
 }
