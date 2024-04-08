@@ -8,6 +8,7 @@ plugins {
 }
 
 android {
+
     namespace = "com.kabe.techexam"
     compileSdk = 34
 
@@ -26,11 +27,13 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -50,6 +53,31 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+
+    flavorDimensions += "environment"
+    productFlavors{
+
+        create("mock"){
+            dimension = "environment"
+            applicationIdSuffix = ".mock"
+            versionNameSuffix = "-mock"
+            buildConfigField("String", "BASE_URL", "\"http://localhost:8080\"")
+        }
+        create("prod"){
+            dimension = "environment"
+            applicationIdSuffix = ".prod"
+            versionNameSuffix = "-prod"
+            buildConfigField("String", "BASE_URL", "\"https://randomuser.me/\"")
+        }
+    }
+
+    androidComponents {
+        beforeVariants { variantBuilder ->
+            if (variantBuilder.name == "mockRelease" || variantBuilder.name == "prodDebug") {
+                variantBuilder.enable = false
+            }
         }
     }
 }
